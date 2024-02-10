@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import {Link, Route, Routes, Navigate} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
+import Nav from "./components/Nav";
 
 const Wrapper = styled.div`
     height: 100vh;
@@ -11,18 +12,7 @@ const Main = styled.div`
     flex-grow: 1;
     overflow: auto;
 `
-const Nav = styled.nav`
-    border: 1px green solid;
 
-    > ul {
-        display: flex;
-        >li{
-            width: 33.3%;
-            text-align: center;
-            padding: 16px;
-        }
-    }
-`
 
 function App() {
   return (
@@ -45,19 +35,7 @@ function App() {
           <Route path="*" element={<NoMatch/>}/>
         </Routes>
       </Main>
-      <Nav>
-        <ul>
-          <li>
-            <Link to="/tags">标签页</Link>
-          </li>
-          <li>
-            <Link to="/money">账本页</Link>
-          </li>
-          <li>
-            <Link to="/statistics">统计页</Link>
-          </li>
-        </ul>
-      </Nav>
+      <Nav />
     </Wrapper>
   );
 }

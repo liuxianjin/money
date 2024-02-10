@@ -1,20 +1,30 @@
 @import-normalize; /* bring in normalize.css styles */
-*{
+@import "helper";
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-*::before{
+
+*::before {
   box-sizing: border-box;
 }
-*::after{
+
+*::after {
   box-sizing: border-box;
 }
-a{
+
+a {
   text-decoration: none;
   color: inherit;
 }
 
-ul,ul{
+ul, ul {
   list-style: none;
+}
+
+body {
+  font-family: $font-hei;
+  font-size: 16px;
+  line-height: 1.2;
 }
