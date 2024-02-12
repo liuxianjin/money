@@ -20,9 +20,9 @@ const NavWrapper = styled.nav`
         align-items: center;
       }
       > a.active {
-        color: yellowgreen;
+        color: #f60;
         .icon {
-          fill: yellowgreen;
+          fill: #f60;
         }
       }
       .icon {
