@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import React from "react";
 import styled from "styled-components";
 import TagsSection from "views/Money/TagsSection";
-import NotesSection from "views/Money/NotesSection";
+import NoteSection from "views/Money/NoteSection";
 import CategorySection from "views/Money/CategorySection";
 import NumberPadSection from "views/Money/NumberPadSection";
 
@@ -14,21 +14,8 @@ const MyLayout = styled(Layout)`
 const Money = () => {
   return (
     <MyLayout>
-      <TagsSection>
-        <ol>
-          <li>衣</li>
-          <li>食</li>
-          <li>住</li>
-          <li>行</li>
-        </ol>
-        <button>新增标签</button>
-      </TagsSection>
-      <NotesSection>
-        <label>
-          <span>备注</span>
-          <input type="text" placeholder="在这里添加备注"/>
-        </label>
-      </NotesSection>
+      <TagsSection />
+      <NoteSection />
       <CategorySection>
         <ul>
           <li className="selected">支出</li>
