@@ -21,9 +21,12 @@ const Wrapper = styled.section`
     }
   }
 `
-
-const NoteSection:React.FC = () => {
-  const [note, setNote] = useState<string>("");
+type Props = {
+  value: string;
+  onChange: (value: string) => void;
+}
+const NoteSection: React.FC<Props> = (props) => {
+  const {value: note, onChange: setNote} = props;
   const refInput = React.useRef<HTMLInputElement>(null);
   const onBlur = () => {
     // 失去焦点时，将输入框的值赋给note

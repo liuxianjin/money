@@ -11,13 +11,29 @@ const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `
+type Category = "+" | "-";
 const Money = () => {
+  const [value, setValue] = React.useState({
+    tags: [] as string [],
+    note: '',
+    category: '-' as Category,
+    amount: 0
+  })
+
   return (
     <MyLayout>
-      <TagsSection />
-      <NoteSection />
-      <CategorySection />
-      <NumberPadSection />
+      <TagsSection value={value.tags} onChange={(tags) =>
+        setValue({...value, tags})
+      }/>
+      <NoteSection value={value.note} onChange={(note) =>
+        setValue({...value, note})
+      }/>
+      <CategorySection value={value.category} onChange={(category) =>
+        setValue({...value, category})
+      }/>
+      <NumberPadSection value={value.amount} onChange={(amount) =>
+        setValue({...value, amount})
+      }/>
     </MyLayout>
   )
 }
