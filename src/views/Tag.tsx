@@ -8,26 +8,37 @@ import styled from "styled-components";
 import Input from "../components/Input";
 import Center from "../components/Center";
 import Space from "../components/Space";
-type Params = {
-  id: string
-}
+
 const Topbar = styled.header`
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   line-height: 20px;
   padding: 14px;
-  background:white;
+  background: white;
 `;
 const InputWrapper = styled.div`
-  background:white;
+  background: white;
   padding: 0 16px;
   margin-top: 8px;
 `;
+
+type Params = {
+  id: string
+}
+
+type Tag = {
+  id: number;
+  name: string;
+}
+
 const Tag: React.FC = (props) => {
   let {id} = useParams<Params>() as Params;
-  const {findTag} = useTags();
-  const tag = findTag(parseInt(id));
+  const {findTag, changeTag} = useTags();
+  const tag = findTag(parseInt(id)) as Tag;
+  const onChange = (e: React.ChangeEvent, id: number) => {
+    // changeTag()
+  }
   return (
     <Layout>
       <Topbar>
@@ -36,8 +47,10 @@ const Tag: React.FC = (props) => {
         <span></span>
       </Topbar>
       <InputWrapper>
-        <Input label="标签名" type="text" placeholder="标签名" value={tag?.name}
-               onChange={()=>{}}>
+        <Input label="标签名" type="text" placeholder="标签名" value={tag.name}
+               onChange={(e) => {
+                 changeTag(tag.id, {name:e.target.value})
+               }}>
         </Input>
       </InputWrapper>
       <Center>
