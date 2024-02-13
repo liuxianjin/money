@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, {useState} from "react";
 import useTags from "../../useTags";
+import createId from "../../lib/createId";
 
 const Wrapper = styled.section`
   background: #FFFFFF;
@@ -43,7 +44,7 @@ const TagsSection: React.FC<Props> = (props) => {
   const selectedTags = props.value;
   const onclick = () => {
     let tag: string | null = window.prompt("请输入标签名");
-    if (tag) setTags([...tags, {id: 5, name: tag}]);
+    if (tag) setTags([...tags, {id: createId(), name: tag}]);
   }
   const onToggleTag = (tag: number) => {
     if (selectedTags.includes(tag)) {
