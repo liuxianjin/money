@@ -17,19 +17,21 @@ const defaultValue = {
   tags: [] as number [],
   note: '',
   category: '-' as Category,
-  amount: 0
+  amount: "0"
 }
 const Money = () => {
   const [value, setValue] = React.useState(defaultValue)
   const {addRecord} = useRecords();
   // Partial 值可以是 value 中的任何属性 typeof value 取出 value 的类型
   const onChange = (obj: Partial<typeof value>) => {
+    debugger
     setValue({...value, ...obj})
   }
   const onOk = () => {
-    addRecord(value);
-    alert("保存成功");
-    setValue(defaultValue);
+    if (addRecord(value)) {
+      alert('保存成功');
+      setValue(defaultValue);
+    }
   }
   return (
     <MyLayout>

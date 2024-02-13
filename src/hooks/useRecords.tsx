@@ -5,7 +5,7 @@ type RecordItem = {
   tags: number[]
   note: string
   category: "+" | "-"
-  amount: number,
+  amount: string,
   createdAt: string
 }
 //  省略createdAt的类型
@@ -20,8 +20,17 @@ const useRecords = () => {
     window.localStorage.setItem('records', JSON.stringify(records));
   }, [records])
   const addRecord = (newRecord: newRecordItem) => {
+    if (parseFloat(newRecord.amount) <= 0) {
+      alert("请输入金额");
+      return false;
+    }
+    if (newRecord.tags.length === 0) {
+      alert("请选择标签");
+      return false;
+    }
     const record = {...newRecord, createdAt: new Date().toISOString()}
-    setRecords([...records, record])
+    setRecords([...records, record]);
+    return true;
   }
   return {records, addRecord}
 }
