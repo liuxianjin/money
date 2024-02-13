@@ -19,21 +19,19 @@ const Money = () => {
     category: '-' as Category,
     amount: 0
   })
-
+  // Partial 值可以是 value 中的任何属性 typeof value 取出 value 的类型
+  const onChange = (obj: Partial<typeof value>) => {
+    setValue({...value, ...obj})
+  }
+  const onOk = () => {
+    // todo
+  }
   return (
     <MyLayout>
-      <TagsSection value={value.tags} onChange={(tags) =>
-        setValue({...value, tags})
-      }/>
-      <NoteSection value={value.note} onChange={(note) =>
-        setValue({...value, note})
-      }/>
-      <CategorySection value={value.category} onChange={(category) =>
-        setValue({...value, category})
-      }/>
-      <NumberPadSection value={value.amount} onChange={(amount) =>
-        setValue({...value, amount})
-      }/>
+      <TagsSection value={value.tags} onChange={(tags) => onChange({tags})}/>
+      <NoteSection value={value.note} onChange={(note) => onChange({note})}/>
+      <CategorySection value={value.category} onChange={(category) => onChange({category})}/>
+      <NumberPadSection value={value.amount} onChange={(amount) => onChange({amount})} onOk={onOk}/>
     </MyLayout>
   )
 }

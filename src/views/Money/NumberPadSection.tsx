@@ -63,6 +63,7 @@ const Wrapper = styled.section`
 type Props = {
   value: number;
   onChange: (value: number) => void;
+  onOk?: () => void;
 }
 
 const NumberPadSection: React.FC<Props> = (props) => {
@@ -77,7 +78,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
     let text = (e.target as HTMLButtonElement).textContent;
     if (!text) return;
     if (text === "OK") {
-      // todo
+      if (props.onOk) props.onOk();
       return;
     }
     if ("01234567890.".split("").concat(["删除", "清空"]).includes(text)) {
