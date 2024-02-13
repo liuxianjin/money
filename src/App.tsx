@@ -4,7 +4,7 @@ import NoMatch from "views/NoMatch"
 import Tags from "views/Tags"
 import Money from "views/Money"
 import Statistics from "views/Statistics"
-
+import Tag from "views/Tag"
 
 function App() {
   return (
@@ -13,6 +13,10 @@ function App() {
       <Route
         path="/tags"
         element={<Tags/>}
+      />
+      <Route
+        path="/tags/:tag"
+        element={<Tag/>}
       />
       <Route
         path="/money"

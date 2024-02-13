@@ -14,7 +14,7 @@ const MyLayout = styled(Layout)`
 type Category = "+" | "-";
 const Money = () => {
   const [value, setValue] = React.useState({
-    tags: [] as string [],
+    tags: [] as number [],
     note: '',
     category: '-' as Category,
     amount: 0

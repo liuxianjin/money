@@ -34,8 +34,8 @@ const Wrapper = styled.section`
   }
 `;
 type Props = {
-  value: string [];
-  onChange: (value: string[]) => void;
+  value: number [];
+  onChange: (value: number[]) => void;
 }
 
 const TagsSection: React.FC<Props> = (props) => {
@@ -43,9 +43,9 @@ const TagsSection: React.FC<Props> = (props) => {
   const selectedTags = props.value;
   const onclick = () => {
     let tag: string | null = window.prompt("请输入标签名");
-    if (tag) setTags([...tags, tag]);
+    if (tag) setTags([...tags, {id: 5, name: tag}]);
   }
-  const onToggleTag = (tag: string) => {
+  const onToggleTag = (tag: number) => {
     if (selectedTags.includes(tag)) {
       props.onChange(selectedTags.filter(t => t !== tag))
     } else {
@@ -53,15 +53,15 @@ const TagsSection: React.FC<Props> = (props) => {
     }
   }
 
-  const getClass = (tag: string) => selectedTags.includes(tag) ? 'selected' : '';
+  const getClass = (tag: number) => selectedTags.includes(tag) ? 'selected' : '';
 
   return (
     <Wrapper>
       <ol>
         {tags.map(tag =>
-          <li key={tag} onClick={
-            () => onToggleTag(tag)
-          } className={getClass(tag)}>{tag}</li>
+          <li key={tag.id} onClick={
+            () => onToggleTag(tag.id)
+          } className={getClass(tag.id)}>{tag.name}</li>
         )}
       </ol>
       <button onClick={onclick}>新增标签</button>
