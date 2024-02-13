@@ -19,7 +19,7 @@ a {
   color: inherit;
 }
 
-ul, ul {
+ul, ol {
   list-style: none;
 }
 
@@ -32,4 +32,15 @@ body {
 .icon {
   width: 1em;
   height: 1em;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.onLine{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
