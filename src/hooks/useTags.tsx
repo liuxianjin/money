@@ -11,7 +11,7 @@ const useTags = () => {
   const [tags, setTags] = useState<Tag[]>([]);
   useEffect(() => {
     let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]');
-    if (localTags.length === 0){
+    if (localTags.length === 0) {
       localTags = [
         {id: createId(), name: '衣'},
         {id: createId(), name: '食'},
@@ -36,7 +36,11 @@ const useTags = () => {
     let tag: string | null = window.prompt("请输入标签名");
     if (tag) setTags([...tags, {id: createId(), name: tag}]);
   }
-  return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag, addTag};
+  const getName = (id: number) => {
+    let tag = tags.filter(t => t.id === id)[0];
+    return tag ? tag.name : "";
+  }
+  return {tags, getName, setTags, findTag, updateTag, findTagIndex, deleteTag, addTag};
 }
 
 export default useTags;

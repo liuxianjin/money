@@ -12,6 +12,10 @@ const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
 `
+const CategoryWrapper = styled.div`
+  background: #c4c4c4;
+`
+
 type Category = "+" | "-";
 const defaultValue = {
   tags: [] as number [],
@@ -37,7 +41,9 @@ const Money = () => {
     <MyLayout>
       <TagsSection value={value.tags} onChange={(tags) => onChange({tags})}/>
       <NoteSection value={value.note} onChange={(note) => onChange({note})}/>
-      <CategorySection value={value.category} onChange={(category) => onChange({category})}/>
+      <CategoryWrapper>
+        <CategorySection value={value.category} onChange={(category) => onChange({category})}/>
+      </CategoryWrapper>
       <NumberPadSection value={value.amount} onChange={(amount) => onChange({amount})} onOk={onOk}/>
     </MyLayout>
   )
