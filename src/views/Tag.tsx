@@ -50,10 +50,14 @@ const Tag: React.FC = (props) => {
       </Center>
     </div>
   )
+  const onclickBack = ()=>{
+      window.history.back();
+  }
+
   return (
     <Layout>
       <Topbar>
-        <Icon name="left"></Icon>
+        <Icon name="left" onClick={onclickBack}></Icon>
         <span>编辑标签</span>
         <span></span>
       </Topbar>

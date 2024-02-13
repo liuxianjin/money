@@ -1,4 +1,5 @@
 import React from "react";
+import cs from "classnames"
 // import x from 'icons/money.svg';// 不打印一下会被删
 // import y from 'icons/tags.svg';
 
@@ -18,12 +19,13 @@ try {
 
 
 type Props = {
-  name: string
-}
+  name?: string
+} & React.SVGAttributes<SVGElement>
 
 function Icon(props: Props) {
+  const {name, children, className, ...rest} = props;
   return (
-    <svg className="icon">
+    <svg className={cs('icon', className)} {...rest}>
       <use xlinkHref={'#' + props.name}></use>
     </svg>
   )
