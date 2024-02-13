@@ -15,7 +15,7 @@ function App() {
         element={<Tags/>}
       />
       <Route
-        path="/tags/:tag"
+        path="/tags/:id"
         element={<Tag/>}
       />
       <Route
