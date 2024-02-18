@@ -27,7 +27,6 @@ const TagList = styled.ol`
 
 function Tags() {
   const {tags, addTag} = useTags();
-  console.log(tags)
   return (
     <Layout>
       <TagList>
